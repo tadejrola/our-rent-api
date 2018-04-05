@@ -1,0 +1,16 @@
+{
+  "name": "vaja2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bookshelf": "^0.13.2",
+    "knex": "^0.14.4",
+    "mysql": "^2.15.0"
+  }
+}
