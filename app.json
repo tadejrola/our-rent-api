@@ -1,0 +1,10 @@
+{
+    "name": "Our Rent API",
+    "description": "REST API for mobile application named Our Rent.",
+    "keywords": [
+        "node",
+        "express",
+        "ourrent"
+    ],
+    "repository": "https://github.com/tadejrola/our-rent-api"
+}
