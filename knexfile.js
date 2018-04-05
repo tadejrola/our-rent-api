@@ -1,5 +1,11 @@
 // Update with your config settings.
-const config = require('./dbconfig.js');
+//const config = require('./dbconfig.js');
+var config = {
+  HOST: '65.19.141.67',
+  USER: 'admintr_admintr',
+  PASSWORD: 'admintr',
+  DATABASE: 'admintr_OurRent'
+}
 
 module.exports = {
 
