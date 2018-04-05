@@ -3,10 +3,11 @@ const bodyParser = require('body-parser');
 const app = express();
 
 app.use(bodyParser.json());
-app.use('/app/image', require('./controllers/imageController'));
-app.use('/app/maintenance', require('./controllers/maintenanceController'));
-app.use('/app/notice', require('./controllers/noticeController'));
-app.use('/app/object', require('./controllers/objectController'));
-app.use('/app/objectNotice', require('./controllers/objectNoticeController'));
+app.use('/api/images', require('./controllers/imageController'));
+app.use('/api/maintenances', require('./controllers/maintenanceController'));
+app.use('/api/notices', require('./controllers/noticeController'));
+app.use('/api/objects', require('./controllers/objectController'));
+app.use('/api/objectNotices', require('./controllers/objectNoticeController'));
 
-app.listen(3000);
+var port = process.env.PORT || 3000;
+app.listen(port);

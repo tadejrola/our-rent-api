@@ -1,5 +1,5 @@
 // Update with your config settings.
-import config from './dbconfig.js';
+const config = require('./dbconfig.js');
 
 module.exports = {
 

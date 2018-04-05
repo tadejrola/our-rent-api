@@ -1,16 +1,20 @@
 {
-  "name": "vaja2",
+  "name": "ourrent",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
+  "description": "OurRent application back-end",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Tadej Rola",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "bookshelf": "^0.13.2",
+    "express": "^4.16.2",
+    "joi": "^13.1.2",
     "knex": "^0.14.4",
+    "sqlite3": "^4.0.0",
     "mysql": "^2.15.0"
   }
 }
