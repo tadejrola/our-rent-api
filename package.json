@@ -11,10 +11,11 @@
   "dependencies": {
     "body-parser": "^1.15.0",
     "bookshelf": "^0.13.2",
+    "cors": "^2.8.4",
     "express": "^4.16.2",
     "joi": "^13.1.2",
     "knex": "^0.14.4",
-    "sqlite3": "^4.0.0",
-    "mysql": "^2.15.0"
+    "mysql": "^2.15.0",
+    "sqlite3": "^4.0.0"
   }
 }

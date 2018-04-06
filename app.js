@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 
+app.use(require("cors")());
 app.use(bodyParser.json());
 app.use('/api/images', require('./controllers/imageController'));
 app.use('/api/maintenances', require('./controllers/maintenanceController'));
