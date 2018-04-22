@@ -30,8 +30,8 @@ const object = bookshelf.Model.extend({
     address: function () {
         return this.belongsTo(address).belongsTo();
     },
-    owner: function () {
-        return this.belongsTo(owner).belongsTo();
+    user: function () {
+        return this.belongsTo(user).belongsTo();
     },
     maintenance: function () {
         return this.hasMany(maintenance).belongsTo();
@@ -61,8 +61,8 @@ const maintenance = bookshelf.Model.extend({
     image: function () {
         return this.hasMany(image);
     },
-    tenant: function () {
-        return this.belongsTo(tenant);
+    user: function () {
+        return this.belongsTo(user);
     }
 });
 
@@ -91,30 +91,25 @@ const address = bookshelf.Model.extend({
     city: function () {
         return this.belongsTo(city);
     },
-    tenant: function () {
-        return this.hasMany(tenant);
+    user: function () {
+        return this.hasMany(user);
     },
     object: function () {
         return this.hasMany(object);
     }
 });
 
-const owner = bookshelf.Model.extend({
-    tableName: 'owner',
-    idAttribute: 'id',
-    object: function () {
-        return this.hasMany(object);
-    }
-});
-
-const tenant = bookshelf.Model.extend({
-    tableName: 'tenant',
+const user = bookshelf.Model.extend({
+    tableName: 'user',
     idAttribute: 'id',
     maintenance: function () {
         return this.hasMany(maintenance);
     },
     tenancyAgreement: function () {
         return this.hasMany(tenancyAgreement);
+    },
+    object: function () {
+        return this.hasMany(object);
     },
     address: function () {
         return this.belongsTo(address);
@@ -124,8 +119,8 @@ const tenant = bookshelf.Model.extend({
 const tenancyAgreement = bookshelf.Model.extend({
     tableName: 'tenancyAgreement',
     idAttribute: 'id',
-    tenant: function () {
-        return this.belongsTo(tenant);
+    user: function () {
+        return this.belongsTo(user);
     },
     object: function () {
         return this.belongsTo(object);
@@ -165,8 +160,7 @@ module.exports.maintenance = maintenance;
 module.exports.country = country;
 module.exports.city = city;
 module.exports.address = address;
-module.exports.owner = owner;
-module.exports.tenant = tenant;
+module.exports.user = user;
 module.exports.tenancyAgreement = tenancyAgreement;
 module.exports.payment = payment;
 module.exports.utilityBill = utilityBill;

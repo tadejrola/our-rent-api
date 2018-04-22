@@ -12,10 +12,9 @@ app.use('/api/objectNotices', require('./controllers/objectNoticeController'));
 app.use('/api/countries', require('./controllers/countryApi'));
 app.use('/api/cities', require('./controllers/cityApi'));
 app.use('/api/addresses', require('./controllers/addressApi'));
-app.use('/api/owners', require('./controllers/ownerApi'));
 app.use('/api/payments', require('./controllers/paymentApi'));
 app.use('/api/tenancyAgreements', require('./controllers/tenancyAgreementApi'));
-app.use('/api/tenants', require('./controllers/tenantApi'));
+app.use('/api/users', require('./controllers/userApi'));
 app.use('/api/utilityBills', require('./controllers/utilityBillApi'));
 
 var port = process.env.PORT || 3000;

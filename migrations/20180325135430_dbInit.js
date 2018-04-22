@@ -7,21 +7,13 @@ exports.up = function (knex, Promise) {
         table.timestamp('maintenanceDate');
         table.integer('object_id').references('object.id');
         table.integer('notice_id').references('notice.id');
-    }).createTable('owner', (table) => {
-        table.increments('id').primary();
-        table.string('firstName');
-        table.string('lastName');
-        table.string('username');
-        table.string('password');
-        table.string('phoneNumber');
-        table.string('email');
     }).createTable('object', (table) => {
         table.increments('id').primary();
         table.string('description');
         table.string('category');
         table.string('image');
         table.integer('address_id').references('address.id');
-        table.integer('owner_id').references('owner.id');
+        table.integer('user_id').references('user.id');
     }).createTable('country', (table) => {
         table.increments('id').primary();
         table.string('country');
@@ -35,7 +27,7 @@ exports.up = function (knex, Promise) {
         table.string('address');
         table.string('houseNumber');
         table.integer('city_id').references('city.id');
-    }).createTable('tenant', (table) => {
+    }).createTable('user', (table) => {
         table.increments('id').primary();
         table.string('firstName');
         table.string('lastName');
@@ -55,7 +47,7 @@ exports.up = function (knex, Promise) {
         table.timestamp('fixedDate');
         table.timestamp('dateReported');
         table.integer('object_id').references('object.id');
-        table.integer('tenant_id').references('tenant.id');
+        table.integer('user_id').references('user.id');
     }).createTable('image', (table) => {
         table.increments('id').primary();
         table.string('description');
@@ -71,7 +63,7 @@ exports.up = function (knex, Promise) {
         table.string('currency');
         table.timestamp('dateSigned');
         table.integer('object_id').references('object.id');
-        table.integer('tenant_id').references('tenant.id');
+        table.integer('user_id').references('user.id');
     }).createTable('payment', (table) => {
         table.increments('id').primary();
         table.string('description');
@@ -100,9 +92,8 @@ exports.down = function (knex, Promise) {
         .dropTable('country')
         .dropTable('city')
         .dropTable('address')
-        .dropTable('owner')
         .dropTable('utilityBill')
         .dropTable('payment')
         .dropTable('tenancyAgreement')
-        .dropTable('tenant');
+        .dropTable('user');
 };
