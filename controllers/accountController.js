@@ -36,7 +36,7 @@ router.post('/register', (req, res, next) => {
                 res.json(true);
             }
             else
-                res.json(false);
+                res.json("User with the same email already exists!");
         } catch (error) {
             res.status(500).json(error);
         }
