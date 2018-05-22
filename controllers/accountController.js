@@ -14,7 +14,7 @@ router.post('/login', (req, res, next) => {
                 password: value.password
             }).fetch();
             if (data !== null)
-                res.json(data.id);
+                res.json(data);
             else
                 res.json(false);
         } catch (error) {

@@ -9,7 +9,7 @@ module.exports = Joi.object().keys({
     phoneNumber: Joi.string().required(),
     job: Joi.string().required(),
     education: Joi.string().required(),
-    smoker: Joi.boolean(),
+    smoker: Joi.boolean().required(),
     email: Joi.string().required(),
     address: Joi.string().required(),
     image: Joi.string().required()

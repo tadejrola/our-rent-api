@@ -25,6 +25,7 @@ exports.up = function (knex, Promise) {
         table.string('education');
         table.boolean('smoker');
         table.string('email');
+        table.string('image');
         table.string('address');
     }).createTable('maintenance', (table) => {
         table.increments('id').primary();
