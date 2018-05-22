@@ -12,21 +12,8 @@ exports.up = function (knex, Promise) {
         table.string('description');
         table.string('category');
         table.string('image');
-        table.integer('address_id').references('address.id');
-        table.integer('user_id').references('user.id');
-    }).createTable('country', (table) => {
-        table.increments('id').primary();
-        table.string('country');
-    }).createTable('city', (table) => {
-        table.increments('id').primary();
-        table.string('city');
-        table.string('zip');
-        table.integer('country_id').references('country.id');
-    }).createTable('address', (table) => {
-        table.increments('id').primary();
         table.string('address');
-        table.string('houseNumber');
-        table.integer('city_id').references('city.id');
+        table.integer('user_id').references('user.id');
     }).createTable('user', (table) => {
         table.increments('id').primary();
         table.string('firstName');
@@ -38,7 +25,7 @@ exports.up = function (knex, Promise) {
         table.string('education');
         table.boolean('smoker');
         table.string('email');
-        table.integer('address_id').references('address.id');
+        table.string('address');
     }).createTable('maintenance', (table) => {
         table.increments('id').primary();
         table.string('description');
@@ -89,9 +76,6 @@ exports.down = function (knex, Promise) {
         .dropTable('object')
         .dropTable('maintenance')
         .dropTable('image')
-        .dropTable('country')
-        .dropTable('city')
-        .dropTable('address')
         .dropTable('utilityBill')
         .dropTable('payment')
         .dropTable('tenancyAgreement')

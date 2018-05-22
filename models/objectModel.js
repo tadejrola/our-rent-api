@@ -5,6 +5,6 @@ module.exports = Joi.object().keys({
     description: Joi.string().required(),
     category: Joi.string().required(),
     image: Joi.string().required(),
-    address_id: Joi.number().integer().required(),
+    address: Joi.string().required(),
     user_id: Joi.number().integer().required()
 });

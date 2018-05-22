@@ -27,9 +27,6 @@ const object = bookshelf.Model.extend({
     objectNotice: function () {
         return this.hasMany(objectNotice);
     },
-    address: function () {
-        return this.belongsTo(address).belongsTo();
-    },
     user: function () {
         return this.belongsTo(user).belongsTo();
     },
@@ -66,39 +63,6 @@ const maintenance = bookshelf.Model.extend({
     }
 });
 
-const country = bookshelf.Model.extend({
-    tableName: 'country',
-    idAttribute: 'id',
-    city: function () {
-        return this.hasMany(city);
-    }
-});
-
-const city = bookshelf.Model.extend({
-    tableName: 'city',
-    idAttribute: 'id',
-    address: function () {
-        return this.hasMany(address);
-    },
-    country: function () {
-        return this.belongsTo(country);
-    }
-});
-
-const address = bookshelf.Model.extend({
-    tableName: 'address',
-    idAttribute: 'id',
-    city: function () {
-        return this.belongsTo(city);
-    },
-    user: function () {
-        return this.hasMany(user);
-    },
-    object: function () {
-        return this.hasMany(object);
-    }
-});
-
 const user = bookshelf.Model.extend({
     tableName: 'user',
     idAttribute: 'id',
@@ -110,9 +74,6 @@ const user = bookshelf.Model.extend({
     },
     object: function () {
         return this.hasMany(object);
-    },
-    address: function () {
-        return this.belongsTo(address);
     }
 });
 
@@ -157,9 +118,6 @@ module.exports.objectNotice = objectNotice;
 module.exports.object = object;
 module.exports.image = image;
 module.exports.maintenance = maintenance;
-module.exports.country = country;
-module.exports.city = city;
-module.exports.address = address;
 module.exports.user = user;
 module.exports.tenancyAgreement = tenancyAgreement;
 module.exports.payment = payment;

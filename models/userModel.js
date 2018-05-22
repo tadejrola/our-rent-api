@@ -8,8 +8,9 @@ module.exports = Joi.object().keys({
     password: Joi.string().required(),
     phoneNumber: Joi.string().required(),
     job: Joi.string().required(),
-    education:  Joi.string().required(),
+    education: Joi.string().required(),
     smoker: Joi.boolean(),
-    email:  Joi.string().required(),
-    address_id: Joi.number().integer()
+    email: Joi.string().required(),
+    address: Joi.string().required(),
+    image: Joi.string().required()
 });
