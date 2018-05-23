@@ -33,7 +33,7 @@ router.getUserObjects('/:id', async (req, res, next) => {
         res.status(500).send('Neprimeren ID');
     else {
         try {
-            const data = await new dbHelper.object.query({where: {user_id: userId}}).fetchAll();
+            const data = await new dbHelper.object().query({where: {user_id: userId}}).fetchAll();
             res.json(data.toJSON());
         } catch (error) {
             res.status(500).json(error);
@@ -47,7 +47,7 @@ router.getUserObjects2('/:id', async (req, res, next) => {
         res.status(500).send('Neprimeren ID');
     else {
         try {
-            const data = await new dbHelper.object('where', 'user_id', '=', userId.toString()).fetchAll();
+            const data = await new dbHelper.object().query('where', 'user_id', '=', userId.toString()).fetchAll();
             res.json(data.toJSON());
         } catch (error) {
             res.status(500).json(error);
