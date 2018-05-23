@@ -27,8 +27,8 @@ router.get('/:id', async (req, res, next) => {
     }
 });
 
-router.getUserObjects('/:id', async (req, res, next) => {
-    const userId = parseInt(req.params.id);
+router.get('/userObjects/userID', async (req, res, next) => {
+    const userId = parseInt(req.params.userID);
     if (isNaN(userId) || userId < 1)
         res.status(500).send('Neprimeren ID');
     else {
