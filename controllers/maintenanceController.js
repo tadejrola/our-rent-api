@@ -28,7 +28,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 router.get('/objectMaintenance/:objectID', async (req, res, next) => {
-    const objectId = parseInt(req.params.userID);
+    const objectId = parseInt(req.params.objectID);
     if (isNaN(objectId) || objectId < 1)
         res.status(500).send('Neprimeren ID');
     else {
