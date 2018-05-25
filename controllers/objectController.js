@@ -41,6 +41,44 @@ router.get('/userObjects/:userID', async (req, res, next) => {
     }
 });
 
+router.get('/tenants/:objectID', async (req, res, next) => {
+    const objectId = parseInt(req.params.objectID);
+    if (isNaN(objectId) || objectId < 1)
+        res.status(500).send('Neprimeren ID');
+    else {
+        try {
+            var data = [];
+            var tenancyAgreement = await new dbHelper.tenancyAgreement({ object_id: objectId }).fetchAll();
+            var users = await new dbHelper.user({}).fetchAll();
+            tenancyAgreement = tenancyAgreement.toJSON();
+            users = users.toJSON();
+            var userAdded = false;
+            var userTemp = null;
+            users.forEach(userEl => {
+                userEl.password = "HIDDEN FIELD";
+                tenancyAgreement.forEach(tenancyEl => {
+                    if (userEl.id === tenancyEl.user_id) {
+                        if (userTemp === null) {
+                            userTemp = userEl;
+                            userAdded = true;
+                            userTemp.tenancyAgreements = [];
+                        }
+                        userTemp.tenancyAgreements.push(tenancyEl);
+                    }
+                });
+                if (userAdded) {
+                    data.push(userTemp);
+                }
+                userAdded = false;
+                userTemp = null;
+            });
+            res.json(data);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+});
+
 router.post('/', (req, res, next) => {
     Joi.validate(req.body, objectModel, async function (err, value) {
         if (err !== null)
