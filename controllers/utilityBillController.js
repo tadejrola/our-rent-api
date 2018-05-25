@@ -33,7 +33,7 @@ router.get('/objectUtilityBill/:objectID', async (req, res, next) => {
         res.status(500).send('Neprimeren ID');
     else {
         try {
-            const data = await new dbHelper.object().query('where', 'object_id', '=', objectId.toString()).fetchAll();
+            const data = await new dbHelper.utilityBill().query('where', 'object_id', '=', objectId.toString()).fetchAll();
             res.json(data.toJSON());
         } catch (error) {
             res.status(500).json(error);
