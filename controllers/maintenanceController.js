@@ -27,6 +27,20 @@ router.get('/:id', async (req, res, next) => {
     }
 });
 
+router.get('/objectMaintenance/:objectID', async (req, res, next) => {
+    const objectId = parseInt(req.params.userID);
+    if (isNaN(objectId) || objectId < 1)
+        res.status(500).send('Neprimeren ID');
+    else {
+        try {
+            const data = await new dbHelper.object().query('where', 'object_id', '=', objectId.toString()).fetchAll();
+            res.json(data.toJSON());
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+});
+
 router.post('/', (req, res, next) => {
     Joi.validate(req.body, mainenanceModel, async function (err, value) {
         if (err !== null)
