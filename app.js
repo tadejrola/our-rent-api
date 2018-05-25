@@ -10,7 +10,6 @@ app.use('/api/maintenances', require('./controllers/maintenanceController'));
 app.use('/api/notices', require('./controllers/noticeController'));
 app.use('/api/objects', require('./controllers/objectController'));
 app.use('/api/objectNotices', require('./controllers/objectNoticeController'));
-app.use('/api/payments', require('./controllers/paymentController'));
 app.use('/api/tenancyAgreements', require('./controllers/tenancyAgreementController'));
 app.use('/api/users', require('./controllers/userController'));
 app.use('/api/utilityBills', require('./controllers/utilityBillController'));

@@ -12,7 +12,7 @@ router.post('/login', (req, res, next) => {
         try {
             const data = await new dbHelper.user({
                 email: value.email,
-                password: value.password
+                password: SHA1.SHA1(value.password)
             }).fetch();
             if (data !== null)
                 res.json(data);
@@ -33,7 +33,7 @@ router.post('/register', (req, res, next) => {
                 email: value.email
             }).fetch();
             if (data === null) {
-                value.password = value.password;
+                value.password = SHA1.SHA1(value.password);
                 await new dbHelper.user(value).save();
                 res.json(true);
             }
