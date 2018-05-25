@@ -52,21 +52,15 @@ exports.up = function (knex, Promise) {
         table.timestamp('dateSigned');
         table.integer('object_id').references('object.id');
         table.integer('user_id').references('user.id');
-    }).createTable('payment', (table) => {
-        table.increments('id').primary();
-        table.string('description');
-        table.boolean('paid');
-        table.timestamp('paymentDate');
-        table.double('amount');
-        table.integer('tenancyAgreement_id').references('tenancyAgreement.id');
     }).createTable('utilityBill', (table) => {
         table.increments('id').primary();
         table.string('name');
         table.string('description');
+        table.string('image');
         table.timestamp('dueDate');
         table.double('billAmount');
         table.integer('object_id').references('object.id');
-        table.integer('payment_id').references('payment.id');
+        table.integer('tenancyAgreement_id').references('tenancyAgreement.id');
     });
 };
 

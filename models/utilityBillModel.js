@@ -5,7 +5,7 @@ module.exports = Joi.object().keys({
     name: Joi.string().required(),
     description: Joi.string().required(),
     dueDate: Joi.string().required(),
-    billAmount: Joi.number(),
-    object_id: Joi.number().integer(),
-    payment_id: Joi.number().integer()
+    billAmount: Joi.number().required(),
+    object_id: Joi.number().integer().required(),
+    tenancyAgreement_id: Joi.number().integer().required()
 });
