@@ -48,7 +48,7 @@ router.get('/tenants/:objectID', async (req, res, next) => {
     else {
         try {
             var data = [];
-            var tenancyAgreement = await new dbHelper.tenancyAgreement({ object_id: objectId }).fetchAll();
+            var tenancyAgreement = await new dbHelper.tenancyAgreement().query('where', 'object_id', '=', objectId).fetchAll();
             var users = await new dbHelper.user({}).fetchAll();
             tenancyAgreement = tenancyAgreement.toJSON();
             users = users.toJSON();
