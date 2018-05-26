@@ -2,14 +2,10 @@
 //const config = require('./dbconfig.js');
 var config = {
 
-  // HOST: process.env.HOST,
-  // USER: process.env.USER,
-  // PASSWORD: process.env.PASSWORD,
-  // DATABASE: process.env.DATABASE
-  HOST: "195.206.228.46",
-  USER: "montingp_test",
-  PASSWORD: "montingp_test",
-  DATABASE: "montingp_test"
+  HOST: process.env.HOST,
+  USER: process.env.USER,
+  PASSWORD: process.env.PASSWORD,
+  DATABASE: process.env.DATABASE
 }
 
 module.exports = {
