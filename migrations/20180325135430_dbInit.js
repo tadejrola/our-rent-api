@@ -1,13 +1,5 @@
 exports.up = function (knex, Promise) {
-    return knex.schema.createTable('notice', (table) => {
-        table.increments('id').primary();
-        table.string('notice');
-    }).createTable('objectNotice', (table) => {
-        table.increments('id').primary();
-        table.timestamp('maintenanceDate');
-        table.integer('object_id').references('object.id');
-        table.integer('notice_id').references('notice.id');
-    }).createTable('object', (table) => {
+    return knex.schema.createTable('object', (table) => {
         table.increments('id').primary();
         table.string('description');
         table.string('category');
@@ -56,9 +48,10 @@ exports.up = function (knex, Promise) {
         table.increments('id').primary();
         table.string('name');
         table.string('description');
-        table.string('image');
         table.timestamp('dueDate');
         table.double('billAmount');
+        table.boolean('paid');
+        table.string('image');
         table.integer('object_id').references('object.id');
         table.integer('tenancyAgreement_id').references('tenancyAgreement.id');
     });
@@ -66,13 +59,10 @@ exports.up = function (knex, Promise) {
 
 exports.down = function (knex, Promise) {
     return knex.schema
-        .dropTable('notice')
-        .dropTable('objectNotice')
         .dropTable('object')
         .dropTable('maintenance')
         .dropTable('image')
         .dropTable('utilityBill')
-        .dropTable('payment')
         .dropTable('tenancyAgreement')
         .dropTable('user');
 };

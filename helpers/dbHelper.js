@@ -2,25 +2,6 @@
 const knex = require('knex')(require('../knexfile').production);
 const bookshelf = require('bookshelf')(knex);
 
-const notice = bookshelf.Model.extend({
-    tableName: 'notice',
-    idAttribute: 'id',
-    objectNotice: function () {
-        return this.hasMany(objectNotice);
-    }
-});
-
-const objectNotice = bookshelf.Model.extend({
-    tableName: 'objectNotice',
-    idAttribute: 'id',
-    notice: function () {
-        return this.belongsTo(notice).belongsTo();
-    },
-    object: function () {
-        return this.belongsTo(object).belongsTo();
-    }
-});
-
 const object = bookshelf.Model.extend({
     tableName: 'object',
     idAttribute: 'id',
@@ -86,39 +67,27 @@ const tenancyAgreement = bookshelf.Model.extend({
     object: function () {
         return this.belongsTo(object);
     },
-    payment: function () {
-        return this.hasMany(payment);
-    }
-});
-
-const payment = bookshelf.Model.extend({
-    tableName: 'payment',
-    idAttribute: 'id',
-    tenancyAgreement: function () {
-        return this.belongsTo(tenancyAgreement);
-    },
     utilityBill: function () {
         return this.hasMany(utilityBill);
     }
+
 });
+
 
 const utilityBill = bookshelf.Model.extend({
     tableName: 'utilityBill',
     idAttribute: 'id',
-    payment: function () {
-        return this.belongsTo(payment);
-    },
     object: function () {
         return this.belongsTo(object);
+    },
+    tenancyAgreement: function () {
+        return this.belongsTo(tenancyAgreement);
     }
 });
 
-module.exports.notice = notice;
-module.exports.objectNotice = objectNotice;
 module.exports.object = object;
 module.exports.image = image;
 module.exports.maintenance = maintenance;
 module.exports.user = user;
 module.exports.tenancyAgreement = tenancyAgreement;
-module.exports.payment = payment;
 module.exports.utilityBill = utilityBill;
