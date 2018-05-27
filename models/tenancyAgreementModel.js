@@ -2,13 +2,13 @@ const Joi = require('joi');
 
 module.exports = Joi.object().keys({
     id: Joi.number().integer(),
-    validFrom: Joi.string().required(),
-    validTo: Joi.string().required(),
-    scan: Joi.string().required(),
-    paymentInterval: Joi.string().required(),
-    paymentAmount: Joi.number().integer(),
-    currency: Joi.string().required(),
-    dateSigned: Joi.string().required(),
+    validFrom: Joi.string(),
+    validTo: Joi.string(),
+    scan: Joi.string(),
+    paymentInterval: Joi.string(),
+    paymentAmount: Joi.number(),
+    currency: Joi.string(),
+    dateSigned: Joi.string(),
     object_id: Joi.number().integer().required(),
     user_id: Joi.number().integer().required()
 });
