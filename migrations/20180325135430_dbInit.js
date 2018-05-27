@@ -37,7 +37,8 @@ exports.up = function (knex, Promise) {
         table.increments('id').primary();
         table.timestamp('validFrom');
         table.timestamp('validTo');
-        table.string('scan');
+        table.string('image');
+        table.string('name');
         table.string('paymentInterval');
         table.double('paymentAmount');
         table.string('currency');

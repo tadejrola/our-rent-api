@@ -2,9 +2,10 @@ const Joi = require('joi');
 
 module.exports = Joi.object().keys({
     id: Joi.number().integer(),
+    name: Joi.string(),
     validFrom: Joi.string(),
     validTo: Joi.string(),
-    scan: Joi.string(),
+    image: Joi.string(),
     paymentInterval: Joi.string(),
     paymentAmount: Joi.number(),
     currency: Joi.string(),
