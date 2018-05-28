@@ -8,5 +8,5 @@ module.exports = Joi.object().keys({
     fixedDate: Joi.date(),
     dateReported: Joi.date(),
     object_id: Joi.number().integer(),
-    tenant_id: Joi.number().integer()
+    user_id: Joi.number().integer()
 });
