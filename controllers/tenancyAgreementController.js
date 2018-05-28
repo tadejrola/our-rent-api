@@ -46,11 +46,10 @@ router.get('/userTenancies/:userID/:objectID', async (req, res, next) => {
         res.status(500).send('Neprimeren ID');
     else {
         try {
-            const data = await new dbHelper.tenancyAgreement().query('where', 'user_id', '=', userId.toString()).fetchAll();
-            const finalData = data.filter(function (obj) {
-                return obj.object_id = objectId;
-            })
-            res.json(finalData.toJSON());
+            let qb = dbHelper.tenancyAgreement();
+
+            const data = await qb.where('user_id', '=', userId.toString()).andWhere("object_id", "=", objectId.toString()).fetchAll();
+            res.json(data.toJSON());
         } catch (error) {
             res.status(500).json(error);
         }
