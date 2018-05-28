@@ -10,6 +10,6 @@ module.exports = Joi.object().keys({
     paymentAmount: Joi.number(),
     currency: Joi.string(),
     dateSigned: Joi.string(),
-    object_id: Joi.number().integer().required(),
-    user_id: Joi.number().integer().required()
+    object_id: Joi.number().integer(),
+    user_id: Joi.number().integer()
 });

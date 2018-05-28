@@ -2,12 +2,12 @@ const Joi = require('joi');
 
 module.exports = Joi.object().keys({
     id: Joi.number().integer(),
-    name: Joi.string().required(),
-    description: Joi.string().required(),
-    dueDate: Joi.string().required(),
-    billAmount: Joi.number().required(),
-    image: Joi.string().required(),
-    paid: Joi.boolean().required(),
-    object_id: Joi.number().integer().required(),
-    tenancyAgreement_id: Joi.number().integer().required()
+    name: Joi.string(),
+    description: Joi.string(),
+    dueDate: Joi.string(),
+    billAmount: Joi.number(),
+    image: Joi.string(),
+    paid: Joi.boolean(),
+    object_id: Joi.number().integer(),
+    tenancyAgreement_id: Joi.number().integer()
 });

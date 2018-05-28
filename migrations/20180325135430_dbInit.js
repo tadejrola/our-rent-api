@@ -24,8 +24,8 @@ exports.up = function (knex, Promise) {
         table.string('description');
         table.boolean('fixed');
         table.string('fixingCost');
-        table.timestamp('fixedDate');
-        table.timestamp('dateReported');
+        table.date('fixedDate');
+        table.date('dateReported');
         table.integer('object_id').references('object.id');
         table.integer('user_id').references('user.id');
     }).createTable('image', (table) => {
@@ -35,21 +35,21 @@ exports.up = function (knex, Promise) {
         table.integer('maintenance_id').references('maintenance.id');
     }).createTable('tenancyAgreement', (table) => {
         table.increments('id').primary();
-        table.timestamp('validFrom');
-        table.timestamp('validTo');
+        table.date('validFrom');
+        table.date('validTo');
         table.string('image');
         table.string('name');
         table.string('paymentInterval');
         table.double('paymentAmount');
         table.string('currency');
-        table.timestamp('dateSigned');
+        table.date('dateSigned');
         table.integer('object_id').references('object.id');
         table.integer('user_id').references('user.id');
     }).createTable('utilityBill', (table) => {
         table.increments('id').primary();
         table.string('name');
         table.string('description');
-        table.timestamp('dueDate');
+        table.date('dueDate');
         table.double('billAmount');
         table.boolean('paid');
         table.string('image');
