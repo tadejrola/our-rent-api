@@ -39,6 +39,23 @@ router.get('/userTenancies/:userID', async (req, res, next) => {
         }
     }
 });
+router.get('/userTenancies/:userID/:objectID', async (req, res, next) => {
+    const userId = parseInt(req.params.userID);
+    const objectId = parseInt(req.params.objectID)
+    if (isNaN(userId) || userId < 1)
+        res.status(500).send('Neprimeren ID');
+    else {
+        try {
+            const data = await new dbHelper.tenancyAgreement().query('where', 'user_id', '=', userId.toString()).fetchAll();
+            const finalData = data.filter(function (obj) {
+                return obj.object_id = objectId;
+            })
+            res.json(finalData.toJSON());
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+});
 
 router.post('/', (req, res, next) => {
     Joi.validate(req.body, tenancyAgreementModel, async function (err, value) {
