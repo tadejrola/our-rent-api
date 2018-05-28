@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 let tenancyAgreementModel = require('../models/tenancyAgreementModel');
+let userObjectModel = require('../models/userObjectModel');
 const dbHelper = require('../helpers/dbHelper');
 const Joi = require('joi');
 
@@ -26,6 +27,7 @@ router.get('/:id', async (req, res, next) => {
         }
     }
 });
+
 router.get('/userTenancies/:userID', async (req, res, next) => {
     const userId = parseInt(req.params.userID);
     if (isNaN(userId) || userId < 1)
@@ -63,6 +65,32 @@ router.post('/', (req, res, next) => {
         try {
             await new dbHelper.tenancyAgreement(value).save();
             res.end();
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    });
+});
+
+router.post('/addObjectUser/', (req, res, next) => {
+    Joi.validate(req.body, userObjectModel, async function (err, value) {
+        if (err !== null)
+            res.status(500).send(err);
+        try {
+            var user = await new dbHelper.user({ email: value.email }).fetch();
+            var object = await new dbHelper.object({ id: value.object_id }).fetch();
+            if (user !== null && object !== null) {
+                await new dbHelper.tenancyAgreement({
+                    name: "Empty agreement",
+                    object_id: value.object_id,
+                    user_id: user.id
+                }).save();
+                res.end();
+            } else {
+                if (user === null)
+                    res.status(400).json("User with selected email doesn't exist");
+                else if (object === null)
+                    res.status(400).json("Object with selected ID doesn't exist");
+            }
         } catch (error) {
             res.status(500).json(error);
         }
