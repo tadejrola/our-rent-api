@@ -54,7 +54,7 @@ router.get('/userObjectUtilityBill/:userID/:objectID', async (req, res, next) =>
             var utilityBillArray = [];
 
             dataJSON.forEach(element => {
-                const data = await new dbHelper.utilityBill().query('where', 'object_id', '=', objectId.toString()).andWhere('tenancyAgreement_id', '=', element.id.toString());
+                const data = await new dbHelper.utilityBill().query('where', 'object_id', '=', objectId.toString()).andWhere('tenancyAgreement_id', '=', element.id.toString()).fetchAll();
                 var jsonData = data.toJSON();
                 utilityBillArray.push(jsonData);
             });
