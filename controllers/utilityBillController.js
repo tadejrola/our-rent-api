@@ -99,18 +99,18 @@ router.put('/:id', (req, res, next) => {
     });
 });
 
-/*router.put('/paid/:id', (req, res, next) => {
-    const id = parseInt(req.params.id);
+router.put('/paid/:id', (req, res, next) => {
+    const billID = parseInt(req.params.id);
 
     if (isNaN(id) || id < 1)
         res.status(500).send('Neprimeren ID');
     try {
-        await new dbHelper.utilityBill({id: id}).save({paid: 1});
+        await new dbHelper.utilityBill({id: billID}).save({paid: true}, {patch: true});
         res.end();
     } catch (error) {
         res.status(500).json(error);
     }
-});*/
+});
 
 router.delete('/:id', async (req, res, next) => {
     const id = parseInt(req.params.id);
