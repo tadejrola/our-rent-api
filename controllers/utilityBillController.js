@@ -49,7 +49,7 @@ router.get('/userObjectUtilityBill/:userID/:objectID', async (req, res, next) =>
         res.status(500).send('Neprimeren ID');
     else {
         try {
-            const dataTenancy = await new dbHelper.tenancyAgreement().query('where', 'user_id', '=', userId.toString()).fetchAll();
+            const dataTenancy = await new dbHelper.tenancyAgreement().query('where', 'user_id', '=', userID.toString()).fetchAll();
             var dataJSON = dataTenancy.toJSON()
             var utilityBillArray = [];
 
