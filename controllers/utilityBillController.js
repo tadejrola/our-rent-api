@@ -105,10 +105,10 @@ router.put('/paid/:id', (req, res, next) => {
     if (isNaN(id) || id < 1)
         res.status(500).send('Neprimeren ID');
     try {
-        await new dbHelper.utilityBill({id: id.toString()}).save({paid: 'true'}, { method: 'update' });
+        await new dbHelper.utilityBill({id: id.toString()}).save({paid: 1}, { method: 'update' });
         res.end();
     } catch (error) {
-            res.status(500).json(error);
+        res.status(500).json(error);
     }
 });
 
