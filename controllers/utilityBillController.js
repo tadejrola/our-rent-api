@@ -99,7 +99,7 @@ router.put('/:id', (req, res, next) => {
     });
 });
 
-router.put('/paid/:id', (req, res, next) => {
+/*router.put('/paid/:id', (req, res, next) => {
     const id = parseInt(req.params.id);
 
     if (isNaN(id) || id < 1)
@@ -110,7 +110,7 @@ router.put('/paid/:id', (req, res, next) => {
     } catch (error) {
         res.status(500).json(error);
     }
-});
+});*/
 
 router.delete('/:id', async (req, res, next) => {
     const id = parseInt(req.params.id);
