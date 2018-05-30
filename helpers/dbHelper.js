@@ -91,3 +91,4 @@ module.exports.maintenance = maintenance;
 module.exports.user = user;
 module.exports.tenancyAgreement = tenancyAgreement;
 module.exports.utilityBill = utilityBill;
+module.exports.knex = knex;

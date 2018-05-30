@@ -27,6 +27,46 @@ router.get('/:id', async (req, res, next) => {
     }
 });
 
+router.get('/utilityBillsForTenant/:id', async (req, res, next) => {
+    const id = parseInt(req.params.id);
+    if (isNaN(id) || id < 1)
+        res.status(500).send('Neprimeren ID');
+    else {
+        try {
+            const data = await new dbHelper.knex.raw(
+                'select utilityBill.* from utilityBill, tenancyAgreement, user ' +
+                'where ' +
+                'utilityBill.tenancyAgreement_id = tenancyAgreement.id and ' +
+                'tenancyAgreement.user_id = user.id and ' +
+                'user.id = ' + id + ';');
+            res.json(data[0]);
+        } catch (error) {
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
+});
+
+router.get('/utilityBillsForOwner/:id', async (req, res, next) => {
+    const id = parseInt(req.params.id);
+    if (isNaN(id) || id < 1)
+        res.status(500).send('Neprimeren ID');
+    else {
+        try {
+            const data = await new dbHelper.knex.raw(
+                'select utilityBill.* from utilityBill, object, user ' +
+                'where ' +
+                'utilityBill.object_id = object.id and ' +
+                'object.user_id = user.id and ' +
+                'user.id = ' + id + ';');
+            res.json(data[0]);
+        } catch (error) {
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
+});
+
 router.get('/objectUtilityBill/:objectID', async (req, res, next) => {
     const objectId = parseInt(req.params.objectID);
     if (isNaN(objectId) || objectId < 1)
