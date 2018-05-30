@@ -41,7 +41,7 @@ router.get('/objectUtilityBill/:objectID', async (req, res, next) => {
     }
 });
 
-router.get('/userObjectUtilityBill/userID/:objectID', async (req, res, next) => {
+router.get('/userObjectUtilityBill/:userID/:objectID', async (req, res, next) => {
     const objectId = parseInt(req.params.objectID);
     const userID = parseInt(req.params.userID)
 
