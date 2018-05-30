@@ -41,11 +41,10 @@ router.get('/objectUtilityBill/:objectID', async (req, res, next) => {
     }
 });
 
-router.get('/userObjectUtilityBill/:userID/:objectID', async (req, res, next) => {
-    const objectId = parseInt(req.params.objectID);
+router.get('/userObjectUtilityBill/:userID', async (req, res, next) => {
     const userId = parseInt(req.params.userID); 
 
-    if (isNaN(objectId) || objectId < 1 || isNaN(userId) || userId < 1)
+    if (isNaN(userId) || userId < 1)
         res.status(500).send('Neprimeren ID');
     else {
         try {
@@ -54,7 +53,7 @@ router.get('/userObjectUtilityBill/:userID/:objectID', async (req, res, next) =>
             var utilityBillArray = [];
 
             dataJSON.forEach(element => {
-                const data = await new dbHelper.utilityBill().query('where', 'object_id', '=', objectId.toString()).andWhere('tenancyAgreement_id', '=', element.id.toString()).fetchAll();
+                const data = await new dbHelper.utilityBill().query('where', 'tenancyAgreement_id', '=', element.id.toString()).fetchAll();
                 var jsonData = data.toJSON();
                 utilityBillArray.push(jsonData);
             });
