@@ -41,6 +41,32 @@ router.get('/objectUtilityBill/:objectID', async (req, res, next) => {
     }
 });
 
+router.get('/userObjectUtilityBill/', async (req, res, next) => {
+    const objectId = parseInt(req.params.objectID);
+    const userID = parseInt(req.params.userID)
+
+    if (isNaN(objectId) || objectId < 1 || isNaN(userID) || userID < 1)
+        res.status(500).send('Neprimeren ID');
+    else {
+        try {
+            const dataTenancy = await new dbHelper.tenancyAgreement().query('where', 'user_id', '=', userId.toString()).fetchAll();
+            var dataJSON = dataTenancy.toJSON()
+            var utilityBillArray = [];
+
+            dataJSON.array.forEach(element => {
+                const data = await new dbHelper.utilityBill().query('where', 'object_id', '=', objectId.toString()).andWhere('tenancyAgreement_id', '=', element.id.toString());
+                var jsonData = data.toJSON();
+                utilityBillArray.push(jsonData)
+            });
+
+            res.json(utilityBillArray);
+            
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+});
+
 router.post('/', (req, res, next) => {
     Joi.validate(req.body, utilityBillModel, async function (err, value) {
         if (err !== null)
