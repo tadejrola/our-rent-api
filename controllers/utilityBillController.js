@@ -41,7 +41,7 @@ router.get('/objectUtilityBill/:objectID', async (req, res, next) => {
     }
 });
 
-router.get('/userObjectUtilityBill/:userID', async (req, res, next) => {
+/*router.get('/userObjectUtilityBill/:userID', async (req, res, next) => {
     const userId = parseInt(req.params.userID); 
 
     if (isNaN(userId) || userId < 1)
@@ -64,7 +64,7 @@ router.get('/userObjectUtilityBill/:userID', async (req, res, next) => {
             res.status(500).json(error);
         }
     }
-});
+});*/
 
 router.post('/', (req, res, next) => {
     Joi.validate(req.body, utilityBillModel, async function (err, value) {
