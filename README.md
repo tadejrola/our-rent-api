@@ -1,7 +1,7 @@
 # OurRent (API)
 This is the underlying API for OurRent mobile application.
 
-OurRent is a mobile app for the management of rental properties (management of contracts, bills, accident reports, notifications and reminders).
+OurRent is a mobile application for the management of rental properties (management of contracts, bills, accident reports, notifications and reminders).
 It serves as a communication channel between landlords and tenants.
 
 ## Dependencies and Technologies
