@@ -1,11 +1,11 @@
-# OurRent (api)
-This is the underlying api for OurRent application.
+# OurRent (API)
+This is the underlying API for OurRent application.
 
 OurRent is a mobile app for the management of rental properties (management of contracts, bills, accident reports, notifications and reminders).
 It serves as a communication channel between landlords and tenants.
 
 ## Dependencies and Technologies
-The app itself is built with React-Native ([GitHub repository](https://github.com/tadejrola/our-rent-client)).
+The application itself is built with React-Native ([GitHub repository](https://github.com/tadejrola/our-rent-client)).
 
 The backend is built on node.js + express.js.
 
